@@ -124,6 +124,7 @@ const Layout = (props) => (
             a:active,
             a:hover {
                 outline-width: 0;
+                color: #666;
             }
             
             
@@ -574,6 +575,7 @@ const Layout = (props) => (
                 width: 100%;
                 font-family: "Pingfang SC", STHeiti, "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
                 font-size: .16rem;
+                background-color: #f7f7f7;
             }
             
             img {

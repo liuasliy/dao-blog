@@ -52,7 +52,7 @@ class Index extends React.Component {
             else {
                 //加载更多数据
                 Fetch({
-                    url: api.blog_list + `?page_size=3&page=${this.state._page}`,
+                    url: api.blog_list + `?page_size=10&page=${this.state._page}`,
                     type: 'get',
                 }).then(res => {
                     const { code, data } = res.data;
@@ -87,7 +87,7 @@ class Index extends React.Component {
                     <div className="d-wrap">
                         {
                            listData.map((item, indexs) => {
-                                return <article key={indexs}>
+                                return <article key={item.id}>
                                     <h3 className="d-title">
                                         <Link as={`/article/detail/${item.id}`} href={`/detail?id=${item.id}`}>
                                             <a><span>{item.title}</span></a>
@@ -102,7 +102,7 @@ class Index extends React.Component {
                                             {
                                                 item.tags.map((items, index) => {
                                                     return(
-                                                        <Link as={`/article/tag/${items.id}`} href={`/tag?id=${items.id}`}>
+                                                        <Link key={index} as={`/article/tag/${items.id}`} href={`/tag?id=${items.id}`}>
                                                             <a >{items}</a>
                                                         </Link>
                                                     )
@@ -137,7 +137,7 @@ class Index extends React.Component {
                 .d-wrap {
                     width: 780px;
                     margin: 0 auto;
-                    padding-bottom: 1.2rem;
+                    padding-bottom: .4rem;
                 }
                 
                 article {
@@ -212,6 +212,7 @@ class Index extends React.Component {
                 .d-tags a {
                     display: inline-block;
                     cursor: pointer;
+                    color: #666;
                 }
                 
                 .d-tags a:hover {
@@ -228,7 +229,7 @@ class Index extends React.Component {
                     display: block;
                     width: .20rem;
                     height: .20rem;
-                    background: url('../../images/icon-tag.png') no-repeat;
+                    background: url('http://res.rdstour.com/static/images/dao/icon-tag.png') no-repeat;
                     background-size: .20rem .20rem;
                     position: absolute;
                     left: 0;
@@ -245,7 +246,7 @@ class Index extends React.Component {
                     display: block;
                     width: .20rem;
                     height: .20rem;
-                    background: url('../../images/icon-view.png') no-repeat;
+                    background: url('http://res.rdstour.com/static/images/dao/icon-view.png') no-repeat;
                     background-size: .20rem .20rem;
                     position: absolute;
                     left: 0;
@@ -254,9 +255,10 @@ class Index extends React.Component {
                 
                 .load-more {
                     text-align: center;
+                    padding: 10px 0px;
+                    background-color: #fff;
+                    color: #999;
                     font-size: .16rem;
-                    background: #eee;
-                    padding: .10rem 0;
                 }
                 `}
                     </style>
@@ -271,7 +273,7 @@ class Index extends React.Component {
 
 
 Index.getInitialProps = async function () {
-    const res = await fetch(api.blog_list+`?page_size=3&page=${1}`);
+    const res = await fetch(api.blog_list+`?page_size=10&page=${1}`);
     const data = await res.json();
     console.log(data.data)
     if(data.code === '0'){

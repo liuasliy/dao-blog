@@ -5,13 +5,15 @@
   "main": "index.js",
   "dependencies": {
     "axios": "^0.18.0",
+    "highlight.js": "^9.14.2",
     "isomorphic-unfetch": "^3.0.0",
     "koa": "^2.7.0",
     "koa-route": "^3.2.0",
     "lru-cache": "^5.1.1",
     "next": "^8.0.1",
     "react": "^16.8.2",
-    "react-dom": "^16.8.2"
+    "react-dom": "^16.8.2",
+    "remarkable": "^1.7.1"
   },
   "devDependencies": {},
   "scripts": {
