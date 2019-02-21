@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import Router from 'next/router';
-
+import * as tools from "../utils/tools";
 
 export default class Search extends Component {
     constructor(props) {
@@ -44,6 +44,7 @@ export default class Search extends Component {
         })
     }
     searchBtn = () =>{
+        tools.setStore('searchkey',this.state.sValue)
         Router.push('/result/'+this.state.sValue);
     }
     componentWillReceiveProps(nextProps){

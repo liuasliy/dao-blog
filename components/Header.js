@@ -3,41 +3,34 @@ import Link from 'next/link';
 import Router from 'next/router';
 import Search from "./Search";
 
-// const Header = () => (
-//     <div>
-//         <Link href="/">
-//             <a style={linkStyle}>Home</a>
-//         </Link>
-//         <Link href="/about">
-//             <a style={linkStyle}>About</a>
-//         </Link>
-//     </div>
-// )
-
 export default class Header extends Component {
     constructor(props){
         super(props);
         this.state = {
           isShow:false,    //是否显示下拉导航
           navData:[
-            {name:'归档',linkUrl:'/home'},
-            {name:'标签',linkUrl:'/homes'}
+            {name:'归档',linkUrl:'/file'},
+            {name:'标签',linkUrl:'/tags'}
             ]
         }
-        // document.addEventListener('click',this.clickHidden)
+        
       }
      
-    //   componentWillUnmount(){
-    //     document.removeEventListener('click',this.clickHidden)
-    //   }
+      componentWillUnmount(){
+        document.removeEventListener('click',this.clickHidden)
+      }
       clickHidden =() =>{
         this.setState({
           isShow:false
+        },()=>{
+            document.removeEventListener('click',this.clickHidden)
         })
       }
       showNav = () => {
         this.setState({
           isShow:true
+        },()=>{
+            document.addEventListener('click',this.clickHidden)
         })
       }
       router =(e) =>{
@@ -47,8 +40,8 @@ export default class Header extends Component {
         return (
             <header>
                 <div className="header">
-                    {/* <div className="logo"><img src="http://res.rdstour.com/static/images/dao/logo.png" alt="" /></div> */}
-                    {/* <div className="web-name"><img src="http://res.rdstour.com/static/images/dao/logotext.png" alt="" /></div> */}
+                    <div className="logo" data-url={'/'} onClick={this.router}><img src="http://res.rdstour.com/static/images/dao/logo.png" alt="" /></div>
+                    <div className="web-name" ><img src="http://res.rdstour.com/static/images/dao/logotext.png" alt="" data-url={'/'} onClick={this.router} /></div>
                     <div className="top-search">
                         <Search />
                     </div>
@@ -95,6 +88,7 @@ export default class Header extends Component {
                 
                 .logo {
                     margin-right: .15rem;
+                    cursor: pointer;
                 }
                 
                 .top-nav {
@@ -108,11 +102,13 @@ export default class Header extends Component {
                 .web-name {
                     flex: 1;
                     font-size: .36rem;
+                    
                 }
                 
                 .web-name img {
                     width: 2.28rem;
                     height: .41rem;
+                    cursor: pointer;
                 }
                 
                 .top-nav span {

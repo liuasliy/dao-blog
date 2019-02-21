@@ -91,7 +91,7 @@ class Index extends React.Component {
                                             {
                                                 item.tags.map((items, index) => {
                                                     return(
-                                                        <Link key={index} as={`/article/tag/${items.id}`} href={`/tag?id=${items.id}`}>
+                                                        <Link key={index} href={`/tag/${items}`}>
                                                             <a >{items}</a>
                                                         </Link>
                                                     )
@@ -264,7 +264,6 @@ class Index extends React.Component {
 Index.getInitialProps = async function () {
     const res = await fetch(api.blog_list+`?page_size=10&page=${1}`);
     const data = await res.json();
-    console.log(data.data)
     if(data.code === '0'){
         return {
             listData: data.data.list,

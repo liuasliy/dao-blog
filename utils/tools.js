@@ -35,22 +35,21 @@ export const setCookie = (f, h, day) => {
 }
 
 export const getCookie = (c) => {
-    var d = document.cookie.match(new RegExp('(^| )' + c + '=([^;]*)(;|$)'));
-    if (d != null) {
-        return decodeURIComponent(d[2]);
+        var d = document.cookie.match(new RegExp('(^| )' + c + '=([^;]*)(;|$)'));
+        if (d != null) {
+            return decodeURIComponent(d[2]);
+        }
+        return null;
     }
-    return null;
-}
-//日期格式化
-function strFormat(str){
-    if(str<10){
-        return '0'+str;
-    }
-    else{
+    //日期格式化
+function strFormat(str) {
+    if (str < 10) {
+        return '0' + str;
+    } else {
         return str;
     }
 }
-export const formatTime = (date,type) => {
+export const formatTime = (date, type) => {
     date = new Date(date)
     let year = date.getFullYear();
     let month = date.getMonth() + 1;
@@ -58,11 +57,14 @@ export const formatTime = (date,type) => {
     let hours = date.getHours();
     let minutes = date.getMinutes();
     let ses = date.getSeconds();
-    if(type=="YY-MM"){
-        return year +'年'+month+'月';
+    if (type == "YY-MM") {
+        return year + '年' + month + '月';
+    }
+    if (type == "YY-MM-DD") {
+        return year + '-' + strFormat(month) + '-' + strFormat(day);
     }
     return year + '-' + strFormat(month) + '-' + strFormat(day) + ' ' +
-    strFormat(hours) + ':' + strFormat(minutes) + ':' + strFormat(ses)
+        strFormat(hours) + ':' + strFormat(minutes) + ':' + strFormat(ses)
 }
 export const dateFormat = (time) => {
     var pubsh = new Date(time);

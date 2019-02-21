@@ -9,65 +9,104 @@ export default class File extends Component {
                 <Layout>
                     <div className="d-home">
                         <div className="d-wrap">
-                            <h3 className="tags-title">归档</h3>
-                            <div className="tags-list">
-                                <div className="tags-cell">
-                                    2018
-                                </div>
-                                <div className="tags-cell">
-                                2017
-                                </div>
-                                <div className="tags-cell">
-                                2016
-                                </div>
+                        <article className="file-archives">
+                            <h1>文章存档</h1>
+                            <div className="archives">
+                                <h2>2019</h2>
+                                <ul>
+                                    <li><span className="arc-date">02/17</span><a href="">总结下移动端调试的一些方法</a><span className="arc-view">251次浏览</span></li>
+                                    <li><span className="arc-date">02/17</span><a href="">总结下移动端调试的一些方法</a><span className="arc-view">251次浏览</span></li>
+                                </ul>
+                                <h2>2018</h2>
+                                <ul>
+                                    <li><span className="arc-date">02/17</span><a href="">总结下移动端调试的一些方法</a><span className="arc-view">251次浏览</span></li>
+                                    <li><span className="arc-date">02/17</span><a href="">总结下移动端调试的一些方法</a><span className="arc-view">251次浏览</span></li>
+                                </ul>
                             </div>
+                        </article>
                         </div>
                         <style jsx>
                         {`
-                            .tags-title {
-                                font-size: .24rem;
-                                font-weight: normal;
-                                text-align: center;
-                                position: relative;
-                                height: .38rem;
-                                margin-bottom: .30rem;
-                            }
-                            
-                            .tags-title::after {
-                                content: "";
-                                width: .6rem;
-                                height: 1px;
-                                background: #ccc;
-                                position: absolute;
-                                bottom: 0;
-                                left: 50%;
-                                margin-left: -.30rem;
-                            }
-                            
-                            .tags-cell {
-                                line-height: .28rem;
-                                font-size: .16rem;
-                                position: relative;
-                                padding-left: .15rem;
-                                cursor: pointer;
-                            }
-                            
-                            .tags-cell:before {
-                                content: "";
-                                width: 4px;
-                                height: 4px;
-                                background: #333;
-                                border-radius: 50%;
-                                display: block;
-                                position: absolute;
-                                left: 0;
-                                top: 50%;
-                                margin-top: -2px;
-                            }
-                            
-                            .tags-cell .date {
-                                padding-left: .30rem;
-                            }
+                        .clear:before,
+                        .clear:after{
+                            content: "";
+                            display: table;
+                        }
+                        .clear:after{
+                            clear: both;
+                        }
+                        .d-home {
+                            max-width: 1170px;
+                            margin: .8rem auto 0;
+                            min-height: 100vh;
+                            background: #fff;
+                            padding-top: .50rem;
+                        }
+                        
+                        .d-wrap {
+                            width: 780px;
+                            margin: 0 auto;
+                            padding-bottom: .4rem;
+                        }
+                        .archives{
+                            font-size: .14rem;
+                            line-height: 1.9;
+                        }
+                        .file-archives h1{
+                            font-weight: bold;
+                            font-size: .18rem;
+                            font-family: Pmingliu,Mingliu;
+                            line-height: .1rem;
+                            margin-bottom: 10px;
+                            padding-bottom: 15px;
+                        }
+                        .file-archives h2{
+                            color: #666;
+                            font-size: .13rem;
+                            font-weight: bold;
+                            margin-bottom: 10px;
+                            padding: 4px 0;
+                            border-bottom: 1px dashed #ccc;
+                        }
+                        .file-archives ul{
+                            margin-bottom: .1rem;
+                            margin-left: 20px;
+                        }
+                        .file-archives li {
+                            position: relative;
+                            display: list-item;
+                            text-align: -webkit-match-parent;
+                        }
+                        .file-archives li:before{
+                            content: "";
+                            width: 4px;
+                            height: 4px;
+                            border-radius: 50%;
+                            background: #333;
+                            display: block;
+                            position: absolute;
+                            left: -12px;
+                            top: 50%;
+                            margin-top: -2px;
+                        }
+                        .file-archives li a{
+                            padding: 0 2px;
+                            text-decoration: none;
+                            color: #333;
+                        }
+                        .file-archives li a:hover{
+                            color: #08c;
+                        }
+                        .arc-date{
+                            margin-right: 8px;
+                            color: #666;
+                            font-size: .13rem;
+                        }
+                        .arc-view{
+                            color: #08c;
+                            margin-left: 30px;
+                        }
+                        
                         `}
                         </style>
                     </div>

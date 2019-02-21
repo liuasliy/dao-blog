@@ -7,15 +7,6 @@ import fetch from 'isomorphic-unfetch';
 import * as tools from '../utils/tools';
 
 export default class Result extends Component {
-    // componentDidMount(){
-    //     this.searchResult(this.ketwords)
-
-    // }
-    // componentWillReceiveProps(nextProps){
-    //     console.log(nextProps)
-    //     let value = nextProps.match.params.name;
-    //     this.searchResult(value)
-    // }
     router = (e) => {
         Router.push(e.currentTarget.getAttribute('data-url'));
     }
@@ -31,7 +22,8 @@ export default class Result extends Component {
                                 </div>
                             </div>
                             {
-                                this.props.listData.length > 0 ? this.props.listData.map((item, index) => {
+                                this.props.listData.length > 0 ? (<div>
+                                    {this.props.listData.map((item, index) => {
                                     return (
                                         <div className="rds-result" key={index} >
                                             <div className="res-topic">
@@ -42,15 +34,20 @@ export default class Result extends Component {
                                             </div>
                                             <div className="res-container">
                                                 <span className="res-date">
-                                                {tools.formatTime(item.pubdate,'YY-MM')} -
+                                                    {tools.formatTime(item.pubdate, 'YY-MM')} -
                                                 </span>
                                                 <span className="res-view">
-                                                {item.brief}
+                                                    {item.brief}
                                                 </span>
                                             </div>
                                         </div>
                                     )
-                                }) : <h3 className="search-footer">没有找到结果。</h3>
+                                })}
+                                   <h3 className="search-footer">
+                                        没有找到更多结果。
+                                    </h3> 
+                                </div>) 
+                                : <h3 className="search-footer">没有找到结果。</h3>
                             }
                         </div>
                     </div>
@@ -109,7 +106,7 @@ export default class Result extends Component {
                 }
                 .search-category{
                     color: #222;
-                    padding-top: 3px;
+                    padding-top: 5px;
                 }
                 .search-category a{
                     cursor: pointer;
