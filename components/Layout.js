@@ -620,7 +620,7 @@ const Layout = (props) => (
             
             ::-webkit-scrollbar {
                 width: .08rem;
-                height: 1.20rem;
+                height: .08rem;
                 background-color: transparent;
             }
             
@@ -632,7 +632,7 @@ const Layout = (props) => (
             
             ::-webkit-scrollbar-thumb {
                 width: .08rem;
-                height: 1.20rem;
+                height: .08rem;
                 border-radius: 10px;
                 background-color: rgba(0, 0, 0, .3);
                 margin-right: .10rem;

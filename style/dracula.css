@@ -1,0 +1,72 @@
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #282a36
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-link {
+    color: #8be9fd
+}
+
+.hljs-function .hljs-keyword {
+    color: #ff79c6
+}
+
+.hljs,
+.hljs-subst {
+    color: #f8f8f2
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-name,
+.hljs-type,
+.hljs-attribute,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-tag,
+.hljs-template-variable {
+    color: #cb7832
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion,
+.hljs-meta {
+    color: #7f9f7f
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-title,
+.hljs-section,
+.hljs-doctag,
+.hljs-type,
+.hljs-name,
+.hljs-strong {
+    font-weight: bold
+}
+
+.hljs-emphasis {
+    font-style: italic
+}
+
+.dd-content code {
+    display: block;
+    overflow-x: auto;
+    padding: 10px !important;
+    line-height: 1.4;
+    background: #3f3f3f;
+    color: #dcdcdc;
+    border-radius: 3px;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    margin-bottom: .10rem
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
-
+import Router from 'next/router';
 import Search from "./Search";
 
 // const Header = () => (
@@ -41,14 +41,14 @@ export default class Header extends Component {
         })
       }
       router =(e) =>{
-        this.context.router.history.push(e.currentTarget.getAttribute('data-url'));
+        Router.push(e.currentTarget.getAttribute('data-url'));
       }
     render() {
         return (
             <header>
                 <div className="header">
-                    <div className="logo"><img src="http://res.rdstour.com/static/images/dao/logo.png" alt="" /></div>
-                    <div className="web-name"><img src="http://res.rdstour.com/static/images/dao/logotext.png" alt="" /></div>
+                    {/* <div className="logo"><img src="http://res.rdstour.com/static/images/dao/logo.png" alt="" /></div> */}
+                    {/* <div className="web-name"><img src="http://res.rdstour.com/static/images/dao/logotext.png" alt="" /></div> */}
                     <div className="top-search">
                         <Search />
                     </div>

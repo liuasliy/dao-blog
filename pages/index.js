@@ -3,24 +3,13 @@ import React from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 import LoadMore from '../components/LoadMore';
-import Paging from '../components/Paging';
 
 import Fetch from '../utils/axios';
 import { api } from '../utils/api'
 import fetch from 'isomorphic-unfetch';
-
+import * as tools from '../utils/tools';
 
 class Index extends React.Component {
-    // static async getInitialProps() {
-    //     const req = await fetch(api.blog_list + `?page_size=3&page=${1}`);
-    //     const res = await req.json();
-    //     if (res.code === '0') {
-    //         return {
-    //             posts: res.data.list,
-    //             totalPage: res.data.totalPage
-    //         }
-    //     }
-    // }
     state = {
         newListData:[],
         _page: 1,
@@ -97,7 +86,7 @@ class Index extends React.Component {
                                         {item.brief}
                                     </div>
                                     <div className="d-intro">
-                                        <span className="d-date">{item.pubdate}</span>
+                                        <span className="d-date">{tools.formatTime(item.pubdate)}</span>
                                         <span className="d-tags">
                                             {
                                                 item.tags.map((items, index) => {
@@ -282,8 +271,6 @@ Index.getInitialProps = async function () {
             totalPage: data.data.totalPage
         }
     }
-
-
 }
 
 export default Index;
