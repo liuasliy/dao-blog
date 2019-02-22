@@ -60,7 +60,7 @@ export default class Comment extends Component {
             return false;
         }
         if(content == ''){
-            Toast.error("请输入评论内容~");
+            Toast.error("请输入留言内容~");
             return false;
         }
         if(isSave){
@@ -139,7 +139,7 @@ export default class Comment extends Component {
                     commentTotal ===0?'':(
                         <div className="comment-list">
                     <div className="cml-title">
-                        最新评论 ({commentTotal})
+                        最新留言 ({commentTotal})
                     </div>
                     {
                         commentList&&commentList.length>0?(
@@ -154,7 +154,7 @@ export default class Comment extends Component {
                                             {item.comcontent}
                                         </div>
                                         <div className="l-quote">
-                                            <a title={'引用 '+item.petname+' 的这条评论'} data-replayer={item.petname} data-content={item.comcontent} onClick={this.quoteReplay}>引用</a>
+                                            <a title={'引用 '+item.petname+' 的这条留言'} data-replayer={item.petname} data-content={item.comcontent} onClick={this.quoteReplay}>引用</a>
                                         </div>
                                     </div>
                                 )
@@ -166,7 +166,7 @@ export default class Comment extends Component {
                 }
                 
                 <div className="comment-form">
-                    <div className="cm-title">发表评论</div>
+                    <div className="cm-title">发表留言</div>
                     <div className="cm-name">
                         <input className="input" type="text" onChange={this.handleChange} maxLength="50" value={this.state.userInfo.name} placeholder="请输入昵称~" name="name" id="cName"/>
                         <div className="tips">昵称？那是必须的~</div>
@@ -176,7 +176,7 @@ export default class Comment extends Component {
                         <div className="tips">邮箱？看你咯~</div>
                     </div>
                     <div className="cm-content">
-                        <textarea className="input textarea" name="content" placeholder="请输入评论内容~" value={this.state.userInfo.content}  onChange={this.handleChange} id="cContent" cols="30" rows="10"></textarea>
+                        <textarea className="input textarea" name="content" placeholder="请输入留言内容~" value={this.state.userInfo.content}  onChange={this.handleChange} id="cContent" cols="30" rows="10"></textarea>
                     </div>
                     <div className="cm-isave">
                         <input type="checkbox" onChange={this.handleChange} checked={this.state.userInfo.isSave} name="save" id="cSave"/>

@@ -51,10 +51,10 @@ class Details extends Component {
 
     thumbUp = () =>{
         //点赞
-        let mac = JSON.parse(tools.getCookie('macinfop'))
+        let mac = JSON.parse(tools.getCookie('macinfo'))
         if(mac && mac.isThumb&& mac.id == this.getBlogId()) return 
         this.setState((prevState, props)=>({
-            pointCount:prevState.pointCount + 1
+            pointCount: this.props.dataDetail.data.point_count + 1
         }),()=>{
             Fetch({
                 url: api.blog_update + '/' + this.getBlogId()+'/',
@@ -65,6 +65,7 @@ class Details extends Component {
             }).then(res=>{
                 if(res.data.code ==0){
                     // this.getInitData()
+                    document.location.reload();
                     tools.setCookie('macinfo',JSON.stringify({
                         id:this.getBlogId(),
                         'isThumb':true,
@@ -78,7 +79,7 @@ class Details extends Component {
         let mac = JSON.parse(tools.getCookie('macinfo'))
         if(mac && mac.isRead && mac.id == this.getBlogId()) return 
         this.setState((prevState, props)=>({
-            readCount:prevState.readCount + 1
+            readCount: this.props.dataDetail.data.read_count + 1
         }),()=>{
             Fetch({
                 url: api.blog_update + '/' + this.getBlogId()+'/',
@@ -321,7 +322,7 @@ Details.getInitialProps = async function (context) {
     const rex = await fetch(api.comment_list + '?blog_id=' + articleId);
     const commentList = await rex.json();
     
-    return {dataDetail,commentList}
+    return {dataDetail,commentList,articleId}
 }
 
 export default Details;

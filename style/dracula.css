@@ -1,21 +1,67 @@
-.hljs {
+/* .hljs {
     display: block;
     overflow-x: auto;
     padding: 0.5em;
     background: #282a36
-}
+} */
 
-.hljs-keyword,
+/* .hljs-keyword,
 .hljs-selector-tag,
 .hljs-literal,
 .hljs-section,
 .hljs-link {
     color: #8be9fd
+} */
+.hljs {
+    display: block;
+    background: #f6f6f6;
+    color: #333
 }
 
-.hljs-function .hljs-keyword {
-    color: #ff79c6
+.hljs-comment,.hljs-meta {
+    color: #6a737d
 }
+
+.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable {
+    color: #032f62
+}
+
+.hljs-keyword,.hljs-selector-tag,.hljs-type {
+    color: #d73a49
+}
+
+.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-symbol {
+    color: #005cc5
+}
+
+.hljs-name,.hljs-section {
+    color: #22863a
+}
+
+.hljs-tag {
+    color: #333
+}
+
+.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title {
+    color: #6f42c1
+}
+
+.hljs-addition {
+    color: #55a532;
+    background-color: #eaffea
+}
+
+.hljs-deletion {
+    color: #bd2c00;
+    background-color: #ffecec
+}
+
+.hljs-link {
+    text-decoration: underline
+}
+/* .hljs-function .hljs-keyword {
+    color: #d73a49
+} */
 
 .hljs,
 .hljs-subst {
@@ -61,12 +107,29 @@
 
 .dd-content code {
     display: block;
-    overflow-x: auto;
-    padding: 10px !important;
-    line-height: 1.4;
-    background: #3f3f3f;
-    color: #dcdcdc;
+    font-size: 13px;
+    line-height: 1.6;
+    background: #f6f6f6;
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    padding: 10px;
+    margin: 0;
+    word-break: break-all;
+    overflow: visible;
     border-radius: 3px;
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-    margin-bottom: .10rem
+}
+
+pre{
+    display: block;
+    font-size: 13px;
+    line-height: 1.6;
+    background: #f6f6f6;
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    margin: 16px 0 14px;
+    padding: 14px 15px 12px;
+    border-radius: 3px;
+    border: none;
+    word-break: initial;
+    word-wrap: initial;
+    white-space: pre;
+    overflow: auto;
 }
