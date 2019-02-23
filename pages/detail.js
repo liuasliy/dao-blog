@@ -5,9 +5,9 @@ import Remarkable from "remarkable";
 
 import Layout from '../components/Layout';
 
-import PageShare from '../components/PageShare'
-import Comment from '../components/Comment'
-
+import PageShare from '../components/PageShare';
+import Comment from '../components/Comment';
+import Toast from '../components/Toast';
 import { api } from '../utils/api'
 import fetch from 'isomorphic-unfetch';
 import Fetch from '../utils/axios';
@@ -49,28 +49,37 @@ class Details extends Component {
         })
     }
 
-    thumbUp = () =>{
+    thumbUp =()=>{
         //点赞
+        var articleCurrentId = window.location.href.split('/')[window.location.href.split('/').length-1];
         let mac = JSON.parse(tools.getCookie('macinfo'))
-        if(mac && mac.isThumb&& mac.id == this.getBlogId()) return 
+        if(mac && mac.isThumb&& mac.id == articleCurrentId) {
+            Toast.info('您已点赞!',3000);
+            return 
+        } 
         this.setState((prevState, props)=>({
             pointCount: this.props.dataDetail.data.point_count + 1
         }),()=>{
             Fetch({
-                url: api.blog_update + '/' + this.getBlogId()+'/',
+                url: api.blog_update + '/' + articleCurrentId+'/',
                 type: 'patch',
                 params:{
                     'point_count':this.state.pointCount
                 }
             }).then(res=>{
                 if(res.data.code ==0){
-                    // this.getInitData()
-                    document.location.reload();
+                    Toast.success('点赞成功!',3000);
                     tools.setCookie('macinfo',JSON.stringify({
-                        id:this.getBlogId(),
+                        id: articleCurrentId,
                         'isThumb':true,
-                    }))
+                        'isRead': mac.isRead
+                    }));
+                    document.location.reload();
+                }else{
+                    Toast.error('点赞失败~',3000);
                 }
+            }).catch(error=>{
+                Toast.error('点赞失败~',3000);
             })
         })
     }
@@ -91,9 +100,9 @@ class Details extends Component {
                 if(res.data.code ==0){
                     tools.setCookie('macinfo',JSON.stringify({
                         // 'mac':mac.mac,
-                        id:this.getBlogId(),
+                        id: this.getBlogId(),
                         'isRead':true,
-                        // 'isThumb':mac.isThumb
+                        'isThumb':mac.isThumb
                     }))
                 }
             })
@@ -160,7 +169,8 @@ class Details extends Component {
                         <div className="content-btn">
                             <div className="dd-btn">
                                 <div className="dd-btn-item dd-good" onClick={this.thumbUp}>
-                                    点赞 ({data.point_count})
+                                    点赞 
+                                    {/* ({data.point_count}) */}
                                 </div>
                             </div>
                             <PageShare />

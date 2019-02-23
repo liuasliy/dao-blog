@@ -13,7 +13,7 @@ export default class Result extends Component {
     render() {
         return (
             <div>
-                <Layout>
+                <Layout keywords={this.props.keywords}>
                     <div className="d-home">
                         <div className="d-wrap">
                             <div className="search-title clearfix">
@@ -171,6 +171,7 @@ Result.getInitialProps = async function (context) {
     const data = await res.json();
     if (data.code == '0') {
         let listData = data.data.list;
+        keywords = decodeURIComponent(keywords);
         return { listData, keywords }
     }
 

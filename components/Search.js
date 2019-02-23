@@ -8,11 +8,11 @@ export default class Search extends Component {
         super(props);
         this.state = {
             keyShow: false,
-            sValue: '',       //搜索词
+            sValue: this.props.keywords, //搜索词
         }
     }
-    onFocusBind =(e) =>{
-        if(e.target.value == ''){return}
+    onFocusBind = (e) => {
+        if (e.target.value == '') { return }
         this.setState({
             keyShow: true
         })
@@ -25,8 +25,8 @@ export default class Search extends Component {
             keyShow: true
         })
     }
-    onChangeEnter =(e)=>{
-        if(e.charCode === 13 && e.key==='Enter'){
+    onChangeEnter = (e) => {
+        if (e.charCode === 13 && e.key === 'Enter') {
             this.searchBtn()
         }
     }
@@ -43,40 +43,57 @@ export default class Search extends Component {
             keyShow: false
         })
     }
-    searchBtn = () =>{
-        tools.setStore('searchkey',this.state.sValue)
-        Router.push('/result/'+this.state.sValue);
+    searchBtn = () => {
+        tools.setStore('searchkey', this.state.sValue)
+        Router.push('/result/' + this.state.sValue);
     }
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps) {
         console.log(nextProps)
-        // let key = nextProps.match.params.sValue;
-        // this.setState({
-        //     sValue: key
-        // })
+            // let key = nextProps.match.params.sValue;
+            // this.setState({
+            //     sValue: key
+            // })
     }
     render() {
-        return (
-            <div className={this.state.keyShow ? 'main-search show-hot' : 'main-search'}>
-                <input type="text"
-                    autoComplete="off"
-                    name="search"
-                    id="Search"
-                    onChange={this.onChangeBind}
-                    onFocus={this.onFocusBind}
-                    onBlur={() => { this.setState({ keyShow: false }) }}
-                    onKeyPress={this.onChangeEnter}
-                    value={this.state.sValue}
-                    placeholder="搜索" />
-                <img className="icon-search" onClick={this.searchBtn} src="http://res.rdstour.com/static/images/dao/icon-search.png" alt=""/>
-                {/* <ul className="hot-words">
-                    <li onMouseOver={this.wordsMove} onClick={this.selectHotWords} className="hot-words-li">crea</li>
-                    <li onMouseOver={this.wordsMove} onClick={this.selectHotWords} className="hot-words-li">零售云</li>
-                    <li onMouseOver={this.wordsMove} onClick={this.selectHotWords} className="hot-words-li">零售云店员</li>
-                    <li onMouseOver={this.wordsMove} onClick={this.selectHotWords} className="hot-words-li">零售云商城</li>
-                    <li onMouseOver={this.wordsMove} onClick={this.selectHotWords} className="hot-words-li">零售云金掌柜</li>
-                </ul> */}
-                <style jsx>
-                {`
+        return ( <
+            div className = { this.state.keyShow ? 'main-search show-hot' : 'main-search' } >
+            <
+            input type = "text"
+            autoComplete = "off"
+            name = "search"
+            id = "Search"
+            onChange = { this.onChangeBind }
+            onFocus = { this.onFocusBind }
+            onBlur = {
+                () => { this.setState({ keyShow: false }) } }
+            onKeyPress = { this.onChangeEnter }
+            value = { this.state.sValue }
+            placeholder = "搜索" / >
+            <
+            img className = "icon-search"
+            onClick = { this.searchBtn }
+            src = "http://res.rdstour.com/static/images/dao/icon-search.png"
+            alt = "" / >
+            <
+            ul className = "hot-words" >
+            <
+            li onMouseOver = { this.wordsMove }
+            onClick = { this.selectHotWords }
+            className = "hot-words-li" > crea < /li> <
+            li onMouseOver = { this.wordsMove }
+            onClick = { this.selectHotWords }
+            className = "hot-words-li" > 零售云 < /li> <
+            li onMouseOver = { this.wordsMove }
+            onClick = { this.selectHotWords }
+            className = "hot-words-li" > 零售云店员 < /li> <
+            li onMouseOver = { this.wordsMove }
+            onClick = { this.selectHotWords }
+            className = "hot-words-li" > 零售云商城 < /li> <
+            li onMouseOver = { this.wordsMove }
+            onClick = { this.selectHotWords }
+            className = "hot-words-li" > 零售云金掌柜 < /li> <
+            /ul> <
+            style jsx > { `
                 .main-search {
                     position: relative;
                 }
@@ -136,9 +153,9 @@ export default class Search extends Component {
                 .hot-words-li:hover {
                     background: #f1f1f1;
                 }
-                `}
-                </style>
-            </div>
+                ` } <
+            /style> <
+            /div>
         )
     }
 }

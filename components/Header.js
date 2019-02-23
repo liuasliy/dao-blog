@@ -43,7 +43,7 @@ export default class Header extends Component {
                     <div className="logo" data-url={'/'} onClick={this.router}><img src="http://res.rdstour.com/static/images/dao/logo.png" alt="" /></div>
                     <div className="web-name" ><img src="http://res.rdstour.com/static/images/dao/logotext.png" alt="" data-url={'/'} onClick={this.router} /></div>
                     <div className="top-search">
-                        <Search />
+                        <Search keywords={this.props.keywords} />
                     </div>
                     <div className="top-nav">
                         <span onClick={this.showNav}>首页</span>

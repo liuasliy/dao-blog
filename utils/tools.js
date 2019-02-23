@@ -63,6 +63,9 @@ export const formatTime = (date, type) => {
     if (type == "YY-MM-DD") {
         return year + '-' + strFormat(month) + '-' + strFormat(day);
     }
+    if (type == "MM/DD") {
+        return strFormat(month) + '/' + strFormat(day);
+    }
     return year + '-' + strFormat(month) + '-' + strFormat(day) + ' ' +
         strFormat(hours) + ':' + strFormat(minutes) + ':' + strFormat(ses)
 }

@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
-
+import Router from 'next/router';
+import Link from 'next/link';
 import Layout from '../components/Layout';
 
+import { api } from '../utils/api'
+import fetch from 'isomorphic-unfetch';
+import * as tools from '../utils/tools';
+
 export default class File extends Component {
+    router = (e) => {
+        Router.push(e.currentTarget.getAttribute('data-url'));
+    }
     render() {
         return (
             <div>
@@ -12,16 +20,27 @@ export default class File extends Component {
                         <article className="file-archives">
                             <h1>文章存档</h1>
                             <div className="archives">
-                                <h2>2019</h2>
-                                <ul>
-                                    <li><span className="arc-date">02/17</span><a href="">总结下移动端调试的一些方法</a><span className="arc-view">251次浏览</span></li>
-                                    <li><span className="arc-date">02/17</span><a href="">总结下移动端调试的一些方法</a><span className="arc-view">251次浏览</span></li>
-                                </ul>
-                                <h2>2018</h2>
-                                <ul>
-                                    <li><span className="arc-date">02/17</span><a href="">总结下移动端调试的一些方法</a><span className="arc-view">251次浏览</span></li>
-                                    <li><span className="arc-date">02/17</span><a href="">总结下移动端调试的一些方法</a><span className="arc-view">251次浏览</span></li>
-                                </ul>
+                                {
+                                    this.props.listData.map((item,index)=>{
+                                        return(
+                                            <div key={index}>
+                                                <h2>{item.year_name}</h2>
+                                                <ul>
+                                                    {
+                                                        item.blog_list.map((items,eindex)=>{
+                                                            return(
+                                                                <Link key={eindex} as={`/article/detail/${items.id}`} href={`/detail?id=${items.id}`}>
+                                                                    <li ><span className="arc-date">{tools.formatTime(items.pubdate,'MM/DD')}</span><a href="">{items.title}</a><span className="arc-view">{items.read_count}次浏览</span></li>
+                                                                </Link>
+                                                                
+                                                            )
+                                                        })
+                                                    }
+                                                </ul>
+                                            </div>
+                                        )
+                                    })
+                                }
                             </div>
                         </article>
                         </div>
@@ -113,5 +132,16 @@ export default class File extends Component {
                 </Layout>
             </div>
         )
+    }
+}
+
+
+File.getInitialProps = async function () {
+    const res = await fetch(api.blog_file);
+    const data = await res.json();
+    if(data.code === '0'){
+        return {
+            listData: data.data.list
+        }
     }
 }
