@@ -7,7 +7,8 @@ const api = {
     'tag_blog_list': baseUrl + '/api/tag_blog_list',
     'comment_list': baseUrl + '/api/comment_list',
     'comment_add': baseUrl + '/api/comment_add',
-    'blog_file': baseUrl + '/api/blog_file'
+    'blog_file': baseUrl + '/api/blog_file',
+    'tags': baseUrl + '/api/tags'
 }
 
 export {
