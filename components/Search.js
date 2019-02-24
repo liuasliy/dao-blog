@@ -10,13 +10,13 @@ export default class Search extends Component {
         super(props);
         this.state = {
             keyShow: false,
-            sValue: this.props.keywords, //搜索词
+            sValue: this.props.keywords||'', //搜索词
             keyArr: [],   //热搜词列表
         }
     }
     onFocusBind = (e) => {
         this.getHotKeys();  //获取热搜词
-        if (e.target.value == '') { return }
+        //if (e.target.value == '') { return }
         this.setState({
             keyShow: true
         })
@@ -25,8 +25,8 @@ export default class Search extends Component {
         let value = e.target.value;
         // if(value == ''){return}
         this.setState({
-            sValue: e.target.value,
-            keyShow: true
+            sValue: value,
+            keyShow: false
         })
     }
     onChangeEnter = (e) => {
@@ -60,6 +60,9 @@ export default class Search extends Component {
             const {code,data} = res.data;
             if(code == 0){
                 let keyArrs = data.list;
+                this.setState({
+                    keyArr: keyArrs.slice(0,8)
+                })
             }
         })
     }
@@ -90,7 +93,16 @@ export default class Search extends Component {
                     src="http://res.rdstour.com/static/images/dao/icon-search.png"
                     alt="" />
                 <ul className="hot-words" >
-                    <li onMouseOver={this.wordsMove}
+                {
+                    this.state.keyArr.map((item,index)=>{
+                        return (
+                            <li key={index} onMouseOver={this.wordsMove}
+                        onClick={this.selectHotWords}
+                        className="hot-words-li" > {item.tag_name} </li>
+                        )    
+                    })
+                }
+                    {/* <li onMouseOver={this.wordsMove}
                         onClick={this.selectHotWords}
                         className="hot-words-li" > crea </li> 
                     <li onMouseOver={this.wordsMove}
@@ -104,7 +116,7 @@ export default class Search extends Component {
                             className="hot-words-li" > 零售云商城 </li> 
                     <li onMouseOver={this.wordsMove}
                                 onClick={this.selectHotWords}
-                                className="hot-words-li" > 零售云金掌柜 </li> 
+                                className="hot-words-li" > 零售云金掌柜 </li>  */}
                 </ul>
                 <style jsx> {`
                 .main-search {
