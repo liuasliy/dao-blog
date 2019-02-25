@@ -1,26 +1,30 @@
 {
-  "name": "blogdao",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "highlight.js": "^9.14.2",
-    "isomorphic-unfetch": "^3.0.0",
-    "koa": "^2.7.0",
-    "koa-route": "^3.2.0",
-    "lru-cache": "^5.1.1",
-    "next": "^8.0.1",
-    "qrcode.react": "^0.9.3",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
-    "remarkable": "^1.7.1"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "dev": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+    "name": "blogdao",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "axios": "^0.18.0",
+        "cross-env": "^5.2.0",
+        "highlight.js": "^9.14.2",
+        "isomorphic-unfetch": "^3.0.0",
+        "koa": "^2.7.0",
+        "koa-route": "^3.2.0",
+        "lru-cache": "^5.1.1",
+        "next": "^8.0.1",
+        "qrcode.react": "^0.9.3",
+        "react": "^16.8.2",
+        "react-dom": "^16.8.2",
+        "remarkable": "^1.7.1"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "dev": "node server.js",
+        "build": "next build",
+        "start": "cross-env NODE_ENV=production node server.js",
+        "go": "npm run-script build && npm start",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC"
 }

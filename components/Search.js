@@ -102,21 +102,6 @@ export default class Search extends Component {
                         )    
                     })
                 }
-                    {/* <li onMouseOver={this.wordsMove}
-                        onClick={this.selectHotWords}
-                        className="hot-words-li" > crea </li> 
-                    <li onMouseOver={this.wordsMove}
-                            onClick={this.selectHotWords}
-                            className="hot-words-li" > 零售云 </li>
-                    <li onMouseOver={this.wordsMove}
-                        onClick={this.selectHotWords}
-                        className="hot-words-li" > 零售云店员 </li> 
-                    <li onMouseOver={this.wordsMove}
-                            onClick={this.selectHotWords}
-                            className="hot-words-li" > 零售云商城 </li> 
-                    <li onMouseOver={this.wordsMove}
-                                onClick={this.selectHotWords}
-                                className="hot-words-li" > 零售云金掌柜 </li>  */}
                 </ul>
                 <style jsx> {`
                 .main-search {
