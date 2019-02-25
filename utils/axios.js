@@ -18,7 +18,7 @@ axios.interceptors.response.use(function(response) {
 })
 
 // 封装axios的post请求
-let fetch = (info) => {
+let Fetch = (info) => {
     return new Promise((resolve, reject) => {
         if (info.type == 'post') {
             axios.post(
@@ -59,4 +59,4 @@ let fetch = (info) => {
     })
 }
 
-export default fetch
+export default Fetch

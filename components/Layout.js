@@ -1,9 +1,19 @@
+import Head from 'next/head';
 import Header from './Header';
 import Footer from './Footer';
 
 const Layout = (props) => (
     <div>
-        <Header />
+        <Head>
+            <title>刀客技术栈</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+            <meta name="baidu-site-verification" content="MRAARGAio9" />
+            <meta name="keywords" content="个人博客,刀客,技术栈,前端,程序员,JavaScript,Node,技术分享"/>
+            <meta name="description" content="个人技术成长记录，与大家分享，共同交流提高。 "/>
+            <link rel="shortcut icon" href="http://res.rdstour.com/static/images/dao/favicon.ico"></link>
+            <script src="http://res.rdstour.com/static/js/count.main.js"></script>
+        </Head>
+        <Header keywords={props.keywords} />
         {props.children}
         <Footer />
         <style jsx global>
@@ -124,6 +134,7 @@ const Layout = (props) => (
             a:active,
             a:hover {
                 outline-width: 0;
+                color: #666;
             }
             
             
@@ -574,6 +585,7 @@ const Layout = (props) => (
                 width: 100%;
                 font-family: "Pingfang SC", STHeiti, "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
                 font-size: .16rem;
+                background-color: #f7f7f7;
             }
             
             img {
@@ -618,7 +630,7 @@ const Layout = (props) => (
             
             ::-webkit-scrollbar {
                 width: .08rem;
-                height: 1.20rem;
+                height: .05rem;
                 background-color: transparent;
             }
             
@@ -630,7 +642,7 @@ const Layout = (props) => (
             
             ::-webkit-scrollbar-thumb {
                 width: .08rem;
-                height: 1.20rem;
+                height: .05rem;
                 border-radius: 10px;
                 background-color: rgba(0, 0, 0, .3);
                 margin-right: .10rem;

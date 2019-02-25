@@ -1,0 +1,247 @@
+/* .hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #282a36
+} */
+
+
+/* .hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-link {
+    color: #8be9fd
+} */
+
+.hljs {
+    display: block;
+    background: #f6f6f6;
+    color: #333
+}
+
+.hljs-comment,
+.hljs-meta {
+    color: #6a737d
+}
+
+.hljs-emphasis,
+.hljs-quote,
+.hljs-string,
+.hljs-strong,
+.hljs-template-variable,
+.hljs-variable {
+    color: #032f62
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-type {
+    color: #d73a49
+}
+
+.hljs-attribute,
+.hljs-bullet,
+.hljs-literal,
+.hljs-symbol {
+    color: #005cc5
+}
+
+.hljs-name,
+.hljs-section {
+    color: #22863a
+}
+
+.hljs-tag {
+    color: #333
+}
+
+.hljs-attr,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-selector-pseudo,
+.hljs-title {
+    color: #6f42c1
+}
+
+.hljs-addition {
+    color: #55a532;
+    background-color: #eaffea
+}
+
+.hljs-deletion {
+    color: #bd2c00;
+    background-color: #ffecec
+}
+
+.hljs-link {
+    text-decoration: underline
+}
+
+
+/* .hljs-function .hljs-keyword {
+    color: #d73a49
+} */
+
+.hljs,
+.hljs-subst {
+    color: #f8f8f2
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-name,
+.hljs-type,
+.hljs-attribute,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-tag,
+.hljs-template-variable {
+    color: #cb7832
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion,
+.hljs-meta {
+    color: #7f9f7f
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-title,
+.hljs-section,
+.hljs-doctag,
+.hljs-type,
+.hljs-name,
+.hljs-strong {
+    font-weight: bold
+}
+
+.hljs-emphasis {
+    font-style: italic
+}
+
+.dd-content code {
+    display: block;
+    font-size: .13rem;
+    line-height: 1.6;
+    background: #f6f6f6;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    padding: 10px;
+    margin: 0;
+    word-break: break-all;
+    overflow: visible;
+    border-radius: 3px;
+}
+
+pre {
+    display: block;
+    font-size: .13rem;
+    line-height: 1.6;
+    background: #f6f6f6;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    margin: 0 0 .15rem;
+    padding: .14rem .15rem .12rem;
+    border-radius: 3px;
+    border: none;
+    word-break: initial;
+    word-wrap: initial;
+    white-space: pre;
+    overflow: auto;
+}
+
+
+/*markdown*/
+
+.dd-content p {
+    margin: 0 0 25px;
+    word-break: break-word!important;
+    font-size: .16rem;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+.dd-content ul {
+    margin: 0.05rem .20rem;
+}
+
+.dd-content ul li {
+    line-height: .24rem;
+    font-size: .16rem;
+    position: relative;
+    padding: .04rem 0;
+}
+
+
+/* .dd-content ul li:before {
+    content: "";
+    display: block;
+    width: .04rem;
+    height: .04rem;
+    border-radius: 50%;
+    background: #333;
+    position: absolute;
+    left: -.10rem;
+    top: 50%;
+    margin-top: -.02rem;
+} */
+
+.dd-content h1,
+.dd-content h2,
+.dd-content h3,
+.dd-content h4,
+.dd-content h5,
+.dd-content h6 {
+    margin: 0 0 .15rem;
+    font-weight: 700;
+    color: #2f2f2f;
+    line-height: 1.7;
+    text-rendering: optimizelegibility;
+}
+
+.dd-content h1 {
+    font-size: .26rem
+}
+
+.dd-content h2 {
+    font-size: .24rem
+}
+
+.dd-content h3 {
+    font-size: .22rem
+}
+
+.dd-content h4 {
+    font-size: .20rem
+}
+
+.dd-content h5 {
+    font-size: .18rem
+}
+
+.dd-content h6 {
+    font-size: .16rem
+}
+
+.dd-content img {
+    max-width: 100%;
+    width: auto;
+}
+
+blockquote {
+    padding: .20rem;
+    margin: 0 0 .20rem;
+    margin-bottom: .25rem;
+    background-color: #f7f7f7;
+    border-left: .06rem solid #b4b4b4;
+    word-break: break-word!important;
+    word-break: break-all;
+    font-size: .16rem;
+    font-weight: 400;
+    line-height: .30rem;
+}

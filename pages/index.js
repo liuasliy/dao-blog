@@ -3,24 +3,13 @@ import React from 'react';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 import LoadMore from '../components/LoadMore';
-import Paging from '../components/Paging';
 
 import Fetch from '../utils/axios';
 import { api } from '../utils/api'
 import fetch from 'isomorphic-unfetch';
-
+import * as tools from '../utils/tools';
 
 class Index extends React.Component {
-    // static async getInitialProps() {
-    //     const req = await fetch(api.blog_list + `?page_size=3&page=${1}`);
-    //     const res = await req.json();
-    //     if (res.code === '0') {
-    //         return {
-    //             posts: res.data.list,
-    //             totalPage: res.data.totalPage
-    //         }
-    //     }
-    // }
     state = {
         newListData:[],
         _page: 1,
@@ -52,7 +41,7 @@ class Index extends React.Component {
             else {
                 //加载更多数据
                 Fetch({
-                    url: api.blog_list + `?page_size=3&page=${this.state._page}`,
+                    url: api.blog_list + `?page_size=10&page=${this.state._page}`,
                     type: 'get',
                 }).then(res => {
                     const { code, data } = res.data;
@@ -87,7 +76,7 @@ class Index extends React.Component {
                     <div className="d-wrap">
                         {
                            listData.map((item, indexs) => {
-                                return <article key={indexs}>
+                                return <article key={item.id}>
                                     <h3 className="d-title">
                                         <Link as={`/article/detail/${item.id}`} href={`/detail?id=${item.id}`}>
                                             <a><span>{item.title}</span></a>
@@ -97,12 +86,12 @@ class Index extends React.Component {
                                         {item.brief}
                                     </div>
                                     <div className="d-intro">
-                                        <span className="d-date">{item.pubdate}</span>
+                                        <span className="d-date">{tools.formatTime(item.pubdate)}</span>
                                         <span className="d-tags">
                                             {
                                                 item.tags.map((items, index) => {
                                                     return(
-                                                        <Link as={`/article/tag/${items.id}`} href={`/tag?id=${items.id}`}>
+                                                        <Link key={index} href={`/tag/${items}`}>
                                                             <a >{items}</a>
                                                         </Link>
                                                     )
@@ -137,7 +126,7 @@ class Index extends React.Component {
                 .d-wrap {
                     width: 780px;
                     margin: 0 auto;
-                    padding-bottom: 1.2rem;
+                    padding-bottom: .4rem;
                 }
                 
                 article {
@@ -212,6 +201,7 @@ class Index extends React.Component {
                 .d-tags a {
                     display: inline-block;
                     cursor: pointer;
+                    color: #666;
                 }
                 
                 .d-tags a:hover {
@@ -228,7 +218,7 @@ class Index extends React.Component {
                     display: block;
                     width: .20rem;
                     height: .20rem;
-                    background: url('../../images/icon-tag.png') no-repeat;
+                    background: url('http://res.rdstour.com/static/images/dao/icon-tag.png') no-repeat;
                     background-size: .20rem .20rem;
                     position: absolute;
                     left: 0;
@@ -245,7 +235,7 @@ class Index extends React.Component {
                     display: block;
                     width: .20rem;
                     height: .20rem;
-                    background: url('../../images/icon-view.png') no-repeat;
+                    background: url('http://res.rdstour.com/static/images/dao/icon-view.png') no-repeat;
                     background-size: .20rem .20rem;
                     position: absolute;
                     left: 0;
@@ -254,9 +244,10 @@ class Index extends React.Component {
                 
                 .load-more {
                     text-align: center;
+                    padding: 10px 0px;
+                    background-color: #fff;
+                    color: #999;
                     font-size: .16rem;
-                    background: #eee;
-                    padding: .10rem 0;
                 }
                 `}
                     </style>
@@ -271,17 +262,14 @@ class Index extends React.Component {
 
 
 Index.getInitialProps = async function () {
-    const res = await fetch(api.blog_list+`?page_size=3&page=${1}`);
+    const res = await fetch(api.blog_list+`?page_size=10&page=${1}`);
     const data = await res.json();
-    console.log(data.data)
     if(data.code === '0'){
         return {
             listData: data.data.list,
             totalPage: data.data.totalPage
         }
     }
-
-
 }
 
 export default Index;
