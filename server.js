@@ -62,11 +62,11 @@ app.prepare()
     .then(() => {
         const server = new Koa()
 
-        server.use(router.get('/', ctx => renderAndCache(ctx, '/index')))
-        server.use(router.get('/article/detail/:id', ctx => renderAndCache(ctx, '/detail', 'noCache')))
+        server.use(router.get('/', ctx => renderAndCache(ctx, '/index','noCache')))
+        server.use(router.get('/article/detail/:id', ctx => renderAndCache(ctx, '/detail','noCache')))
         server.use(router.get('/result/:title', ctx => renderAndCache(ctx, '/result', 'noCache')))
         server.use(router.get('/tag/:name', ctx => renderAndCache(ctx, '/tag', 'noCache')))
-        server.use(router.get('/file', ctx => renderAndCache(ctx, '/file')))
+        server.use(router.get('/file', ctx => renderAndCache(ctx, '/file','noCache')))
         server.use(router.get('/tags', ctx => renderAndCache(ctx, '/tags')))
 
         server.use(async(ctx) => {
