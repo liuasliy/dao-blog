@@ -1,4 +1,4 @@
-const baseUrl = 'http://api.rdstour.com';
+const baseUrl = 'http://127.0.0.1';
 const api = {
     'blog_list': baseUrl + '/api/blog_list',
     'blog_detail': baseUrl + '/api/blog_detail',
